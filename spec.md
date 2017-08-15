@@ -1,0 +1,6 @@
+Git Repo Address                [X]
+Blog Post                       [ ]
+Coding Recording for 30 minutes [ ]
+Publish Gem                     [ ]
+README.md                       [ ]
+Video Demo of the Gem for User  [ ]
