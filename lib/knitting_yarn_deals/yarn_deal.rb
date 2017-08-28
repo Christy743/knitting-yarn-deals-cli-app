@@ -1,6 +1,5 @@
 class KnittingYarnDeals::Deal
-  attr_accessor :name, :price, :availability, :url
-
+  attr_accessor :name, :price, :availability, :weight
   def self.today
     # I should return a bunch of instances of
     # yarn deals
@@ -39,30 +38,30 @@ class KnittingYarnDeals::Deal
   end
 
   def self.scrape_website
-    doc = Nokogiri::HTML(open("https://yarns"))
+    doc = Nokogiri::HTML(open("http://www.knitpicks.com/yarns/knitting_yarns.html"))
     #put in the different html tags into this area
     #example: name = doc.search("h2.main-title").text
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search("h2.main-title").text
-    deal.price = doc.search("#todays-deal span.price").text
-    deal.url = doc. search("a.wantone").first.attr("href")
+    deal.name = doc.search("a.titleSmall").text
+    deal.price = doc.search("span.costSmall").text
+    deal.weight = doc.search("span.yarnWeight").text
     deal.availability = true
     deal
     binding.pry
   end
 
   def self.scrape_another_website
-    doc = Nokogiri::HTML(open("https://yarns"))
+    doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-yarns"))
     #put in the different html tags into this area
     #example: name = doc.search("h2.main-title").text
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search("h2.main-title").text.strip
-    deal.price = doc.search("#todays-deal span.price").text.strip
-    deal.url = doc. search("a.wantone").first.attr("href")
+    deal.name = doc.search("span.card-title").text.strip
+    deal.price = doc.search("span.card-price").text.strip
+    deal.weight = doc.search("em.card-features")
     deal.availability = true
     deal
     binding.pry

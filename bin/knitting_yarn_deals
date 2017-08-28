@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require '../lib/knitting_yarn_deals'
+require './lib/knitting_yarn_deals'
 
 KnittingYarnDeals::CLI.new.call
