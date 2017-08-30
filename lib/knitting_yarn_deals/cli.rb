@@ -2,42 +2,41 @@
 class KnittingYarnDeals::CLI
 
   def call
-    puts "Knitting yarn deals:"
-    list_deals
+    puts "Hello! Check out the yarn deals for your next knitting project."
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    list_yarns
     menu
     goodbye
   end
 
-  def list_deals
+  def list_yarns
     # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-h
-    puts <<-Doc.gsub /^\s*/, ''
-    1. knitpicks
-    2. loveknitting
-    Doc
-    @yarn_deal = KnittingYarnDeals::Deal.today
-    @yarn_deal.each.with_index(1) do |deal, i|
-      puts "#{i}. #{deal.name} - #{deal.price} - #{deal.availability}"
+    # puts <<-Doc.gsub /^\s*/, ''
+    puts "Yarn deals for your knitting project:"
+     @yarn_deal = KnittingYarnDeals::Deal.today
+     @yarn_deal.each.with_index(1) do |deal, i|
+      puts "#{i}. #{deal.name} - #{deal.price} - #{deal.weight} - #{deal.availability}"
     end
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the yarn you want to know more about
-      or see the list again or type exit:"
+      puts "Enter the list number of yarn you want to know more about or type 'list' again to see the list of yarns or type exit:"
     input = gets.strip.downcase
 
     if input.to_i > 0
-      puts @yarn_deal[input.to_i-1]
+      yarns = @yarn_deal[input.to_i-1]
+      puts "#{yarns.name} - #{yarns.price} - #{yarns.weight} - #{yarns.availability}"
     elsif input == "list"
-      list_deals
+      list_yarns
     else
-      puts "Not sure what you want. Type list or exit."
+      puts "I am not sure what you want. Please type list or exit."
     end
     end
   end
 
   def goodbye
-    puts "See you later!"
+    puts "Good Bye and Happy Knitting!"
   end
 end

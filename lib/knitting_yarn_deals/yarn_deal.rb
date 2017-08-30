@@ -1,5 +1,5 @@
 class KnittingYarnDeals::Deal
-  attr_accessor :name, :price, :availability, :weight
+  attr_accessor :name, :price, :weight, :availability, :url
   def self.today
     # I should return a bunch of instances of
     # yarn deals
@@ -11,8 +11,8 @@ class KnittingYarnDeals::Deal
   def self.scrape_deals
     deals = []
 
-    deals << self.scrape_website
-    deals << self.scrape_another_website
+    deals << self.scrape_knit_picks
+    deals << self.scrape_love_knitting
     # Go to website, find the product
     # extract the properties
     # instantiate a deal_1
@@ -37,22 +37,23 @@ class KnittingYarnDeals::Deal
     #[deal_1, deal_2]
   end
 
-  def self.scrape_website
+  def self.scrape_knit_picks
     doc = Nokogiri::HTML(open("http://www.knitpicks.com/yarns/knitting_yarns.html"))
     #put in the different html tags into this area
     #example: name = doc.search("h2.main-title").text
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search.css(".titleSmall").text.strip
-    deal.price = doc.search.css(".costSmall").text.gsub(/n\s+/)
-    deal.weight = doc.search.css(".yarnWeight").text
+    deal.name = doc.search("div.listImgContainer .title").text
+    deal.price = doc.search(".costSmall").text.gsub(/n\s+/)
+    deal.weight = doc.search(".yarnWeight").text
+    deal.url = doc.search("a.titleSmall").first.attr("href").strip
     deal.availability = true
     deal
     binding.pry
   end
 
-  def self.scrape_another_website
+  def self.scrape_love_knitting
     doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-yarns"))
     #put in the different html tags into this area
     #example: name = doc.search("h2.main-title").text
@@ -64,7 +65,6 @@ class KnittingYarnDeals::Deal
     deal.weight = doc.search.css("em.card-features").text
     deal.availability = true
     deal
-    binding.pry
   end
 
 end
