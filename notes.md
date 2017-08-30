@@ -10,6 +10,9 @@ How to Build a CLI Gem
 8. Program
 
 - A command line interface for project (put title here later), starting with web sites
+--choose a website
+--brings up list of yarns
+--choose yarn and it gives price and weight 
 
 User types in request -
 List is generated

@@ -44,9 +44,9 @@ class KnittingYarnDeals::Deal
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search("a.titleSmall").text
-    deal.price = doc.search("span.costSmall").text
-    deal.weight = doc.search("span.yarnWeight").text
+    deal.name = doc.search.css(".titleSmall").text.strip
+    deal.price = doc.search.css(".costSmall").text.gsub(/n\s+/)
+    deal.weight = doc.search.css(".yarnWeight").text
     deal.availability = true
     deal
     binding.pry
@@ -59,9 +59,9 @@ class KnittingYarnDeals::Deal
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search("span.card-title").text.strip
-    deal.price = doc.search("span.card-price").text.strip
-    deal.weight = doc.search("em.card-features")
+    deal.name = doc.search.css("span.card-title").text.strip
+    deal.price = doc.search.css("span.card-price").text.strip
+    deal.weight = doc.search.css("em.card-features").text
     deal.availability = true
     deal
     binding.pry

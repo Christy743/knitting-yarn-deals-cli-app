@@ -11,8 +11,8 @@ class KnittingYarnDeals::CLI
   def list_deals
     # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-h
     puts <<-Doc.gsub /^\s*/, ''
-    1. Yarn 1
-    2. Yarn 2
+    1. knitpicks
+    2. loveknitting
     Doc
     @yarn_deal = KnittingYarnDeals::Deal.today
     @yarn_deal.each.with_index(1) do |deal, i|
