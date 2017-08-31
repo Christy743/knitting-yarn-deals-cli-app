@@ -44,13 +44,12 @@ class KnittingYarnDeals::Deal
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search("div.listImgContainer .title").text
-    deal.price = doc.search(".costSmall").text.gsub(/n\s+/)
+    deal.name = doc.search("a.titleSmall").text
+    deal.price = doc.search(".costSmall").text   #.gsub(/n\s+/)
     deal.weight = doc.search(".yarnWeight").text
     deal.url = doc.search("a.titleSmall").first.attr("href").strip
     deal.availability = true
     deal
-    binding.pry
   end
 
   def self.scrape_love_knitting
@@ -60,9 +59,10 @@ class KnittingYarnDeals::Deal
     #another example: price = doc.search("#todays-deal span.price").text
 
     deal = self.new
-    deal.name = doc.search.css("span.card-title").text.strip
-    deal.price = doc.search.css("span.card-price").text.strip
-    deal.weight = doc.search.css("em.card-features").text
+    deal.name = doc.search("figcaption.card-info .card-title").text
+    deal.price = doc.search(".card-price .price-wrapper .price").text
+    deal.weight = doc.search("em.card-features").text
+    deal.url = doc.search(".card a.product").first.attr("href")
     deal.availability = true
     deal
   end
