@@ -1,3 +1,4 @@
+
 How to Build a CLI Gem
 
 Plan your gem, imagine your interface
@@ -19,10 +20,9 @@ A yarn deal has a name A yarn deal has a price A yarn deal has a URL A yarn deal
 
 List for knitting_yarn_deals gem/app lab requirements:
 
-Git Repo Address [X]
-Started repository for my gem CLI project
-Blog Post [ ]
-Record Code for 20 minutes [ ]
-Publish Gem [ ]
-README.md [ ]
-Video Demo of the Gem for User [ ]
+Git Repo Address                [X]
+Blog Post                       [ ]
+Coding Recording for 30 minutes [ ]
+Publish Gem                     [ ]
+README.md                       [ ]
+Video Demo of the Gem for User  [ ]
