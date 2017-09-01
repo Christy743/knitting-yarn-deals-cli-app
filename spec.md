@@ -1,0 +1,28 @@
+How to Build a CLI Gem
+
+Plan your gem, imagine your interface
+Start with the project structure – google
+Start with the entry point – the file run
+Force that to build the CLI interface
+Stub out the interface
+Start making things real
+Discover objects
+Program
+A command line interface for project (put title here later), starting with web sites --choose a website --brings up list of yarns --choose yarn and it gives price and weight
+User types in request - List is generated
+
+User is prompted to choose or select from the list
+
+What is a yarn deal?
+
+A yarn deal has a name A yarn deal has a price A yarn deal has a URL A yarn deal has availability
+
+List for knitting_yarn_deals gem/app lab requirements:
+
+Git Repo Address [X]
+Started repository for my gem CLI project
+Blog Post [ ]
+Record Code for 20 minutes [ ]
+Publish Gem [ ]
+README.md [ ]
+Video Demo of the Gem for User [ ]

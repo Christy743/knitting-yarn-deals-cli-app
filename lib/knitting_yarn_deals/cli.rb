@@ -2,24 +2,28 @@
 class KnittingYarnDeals::CLI
 
   def call
-    puts ""
-    puts "Hello! Check out the yarn deals for your next knitting project."
-    puts ""
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    puts ""
+    hello
     list_yarns
     menu
     goodbye
   end
 
+  def hello
+    puts ""
+    puts "Hello! Check out the yarn deals for your next knitting project."
+    puts ""
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts ""
+  end
+
   def list_yarns
     # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-h
     # puts <<-Doc.gsub /^\s*/, ''
+
     puts "Yarn deals for your knitting project:"
     puts ""
-     @yarn_deal = KnittingYarnDeals::Deal.today
+     KnittingYarnDeals::Scraper.today
      @yarn_deal.map.with_index(1) do |deal, i|
-       binding.pry
       puts "#{i}. #{deal.name} - #{deal.price}"     #- #{deal.weight} - #{deal.availability}"
     end
   end
@@ -36,7 +40,7 @@ class KnittingYarnDeals::CLI
     elsif input == "list"
       list_yarns
     else
-      puts "I am not sure what you want. Please type list or exit."
+      puts "Please type list or exit."
     end
     end
   end
