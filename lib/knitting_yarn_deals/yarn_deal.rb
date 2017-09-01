@@ -1,18 +1,30 @@
-class KnittingYarnDeals::Deal
-  attr_accessor :name, :price, :weight, :availability, :url
-  def self.today
+class KnittingYarnDeals::Yarn_Deal
+  attr_accessor :name, :price, :availability, :url
+
+  @@all = []
+
+  def self.new_yarn_index(yarn)
+
+  end
+
+  #def initialize(name = nil, url = nil)
+  #  @name = name
+  #  @url = url
+  #end
+
+  #def self.today
     # I should return a bunch of instances of
     # yarn deals
     # Scrape web sites and return yarn deals based on that data
       #  KnittingYarnDeals::DealScraper.new("https://")
-    self.scrape_deals
-  end
+  #  self.scrape_deals
+  #end
 
-  def self.scrape_deals
-    deals = []
+  #def self.scrape_deals
+  #  deals = []
 
-    deals << self.scrape_knit_picks
-    deals << self.scrape_love_knitting
+  #  deals << self.scrape_knit_picks
+    #deals << self.scrape_love_knitting
     # Go to website, find the product
     # extract the properties
     # instantiate a deal_1
@@ -20,7 +32,7 @@ class KnittingYarnDeals::Deal
     # Go to website
     # Have an array of data
     # Push the data into the array of 'deals'
-    deals
+  #  deals
 
     #deal_1 = self.new
     #deal_1.name = "Yarn 1"
@@ -35,36 +47,35 @@ class KnittingYarnDeals::Deal
     #deal_2.url = "https://"
 
     #[deal_1, deal_2]
-  end
+  #end
 
-  def self.scrape_knit_picks
-    doc = Nokogiri::HTML(open("http://www.knitpicks.com/yarns/knitting_yarns.html"))
+  #def self.scrape_knit_picks
+  #  doc = Nokogiri::HTML(open("http://www.knitpicks.com/yarns/knitting_yarns.html"))
     #put in the different html tags into this area
     #example: name = doc.search("h2.main-title").text
     #another example: price = doc.search("#todays-deal span.price").text
 
-    deal = self.new
-    deal.name = doc.search("a.titleSmall").text
-    deal.price = doc.search(".costSmall").text   #.gsub(/n\s+/)
-    deal.weight = doc.search(".yarnWeight").text
-    deal.url = doc.search("a.titleSmall").first.attr("href").strip
-    deal.availability = true
-    deal
-  end
+  #  deal = self.new
+  #  deal.name = doc.search("a.titleSmall").text        #"a.titleSmall"
+  #  deal.price = doc.search(".costSmall").text   #.gsub(/n\s+/)
+    #deal.weight = doc.search(".yarnWeight").text
+  #  deal.url = doc.search("a.titleSmall").first.attr("href").strip
+  #  deal.availability = true
+  #  deal
+  #end
 
-  def self.scrape_love_knitting
-    doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-yarns"))
+  #def self.scrape_love_knitting
+    #doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-yarns"))
     #put in the different html tags into this area
     #example: name = doc.search("h2.main-title").text
     #another example: price = doc.search("#todays-deal span.price").text
 
-    deal = self.new
-    deal.name = doc.search("figcaption.card-info .card-title").text
-    deal.price = doc.search(".card-price .price-wrapper .price").text
-    deal.weight = doc.search("em.card-features").text
-    deal.url = doc.search(".card a.product").first.attr("href")
-    deal.availability = true
-    deal
-  end
-
-end
+    #deal = self.new
+    #deal.name = doc.search("figcaption.card-info .card-title").text
+    #deal.price = doc.search(".card-price .price-wrapper .price").text
+    #deal.weight = doc.search("em.card-features").text
+    #deal.url = doc.search(".card a.product").first.attr("href")
+    #deal.availability = true
+    #deal
+  #end
+#end
