@@ -2,8 +2,11 @@
 class KnittingYarnDeals::CLI
 
   def call
+    puts ""
     puts "Hello! Check out the yarn deals for your next knitting project."
+    puts ""
     puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts ""
     list_yarns
     menu
     goodbye
@@ -13,9 +16,11 @@ class KnittingYarnDeals::CLI
     # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-h
     # puts <<-Doc.gsub /^\s*/, ''
     puts "Yarn deals for your knitting project:"
+    puts ""
      @yarn_deal = KnittingYarnDeals::Deal.today
-     @yarn_deal.each.with_index(1) do |deal, i|
-      puts "#{i}. #{deal.name} - #{deal.price} - #{deal.weight} - #{deal.availability}"
+     @yarn_deal.map.with_index(1) do |deal, i|
+       binding.pry
+      puts "#{i}. #{deal.name} - #{deal.price}"     #- #{deal.weight} - #{deal.availability}"
     end
   end
 
@@ -27,7 +32,7 @@ class KnittingYarnDeals::CLI
 
     if input.to_i > 0
       yarns = @yarn_deal[input.to_i-1]
-      puts "#{yarns.name} - #{yarns.price} - #{yarns.weight} - #{yarns.availability}"
+      #puts "#{yarns.name} - #{yarns.price} - #{yarns.weight} - #{yarns.availability}"
     elsif input == "list"
       list_yarns
     else
