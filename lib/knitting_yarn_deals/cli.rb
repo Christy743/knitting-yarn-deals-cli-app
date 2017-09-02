@@ -1,3 +1,4 @@
+require 'pry'
 #CLI Controller
 class KnittingYarnDeals::CLI
 
@@ -19,28 +20,26 @@ class KnittingYarnDeals::CLI
   def list_yarns
     # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-h
     # puts <<-Doc.gsub /^\s*/, ''
-
-    puts "Yarn deals for your knitting project:"
-    puts ""
-     KnittingYarnDeals::Scraper.today
-     @yarn_deal.map.with_index(1) do |deal, i|
-      puts "#{i}. #{deal.name} - #{deal.price}"     #- #{deal.weight} - #{deal.availability}"
-    end
+    KnittingYarnDeals::YarnDeal.yarn_index
+    KnittingYarnDeals::YarnDeal.yarn_list
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the list number of yarn you want to know more about or type 'list' again to see the list of yarns or type exit:"
+      puts "Type in the number from the list of yarn you would like to know more about
+      or type 'list' again to see the list of yarns or type 'exit' to end this app:"
     input = gets.strip.downcase
 
     if input.to_i > 0
-      yarns = @yarn_deal[input.to_i-1]
+
+      puts "yarn of your choice"
+    #  yarns = @yarn_deal[input.to_i-1]
       #puts "#{yarns.name} - #{yarns.price} - #{yarns.weight} - #{yarns.availability}"
     elsif input == "list"
       list_yarns
     else
-      puts "Please type list or exit."
+      puts "Please type 'list' for a list of yarns or type 'exit' to exit this app."
     end
     end
   end
@@ -48,4 +47,5 @@ class KnittingYarnDeals::CLI
   def goodbye
     puts "Good Bye and Happy Knitting!"
   end
+
 end
