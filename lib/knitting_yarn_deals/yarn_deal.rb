@@ -1,53 +1,41 @@
-class KnittingYarnDeals::Yarn_Deal
+require 'pry'
+class KnittingYarnDeals::YarnDeal
   attr_accessor :name, :price, :availability, :url
 
   @@all = []
 
-  def self.new_yarn_index(yarn)
-
+  def self.all
+    @@all
   end
 
-  #def initialize(name = nil, url = nil)
-  #  @name = name
-  #  @url = url
-  #end
+  def initialize
+    @name = name
+    @price = price
+    @url = url
+  end
 
-  #def self.today
-    # I should return a bunch of instances of
-    # yarn deals
-    # Scrape web sites and return yarn deals based on that data
-      #  KnittingYarnDeals::DealScraper.new("https://")
-  #  self.scrape_deals
-  #end
+  def self.yarn_index
+    html = KnittingYarnDeals::Scraper.get_page
+    yarn_array = html.css("div.jcarousel li")
+    yarn_array.each do |each_skein|
+      yarn_ball = KnittingYarnDeals::YarnDeal.new
+      yarn_ball.name = each_skein.css("a.titleSmall").text
+      yarn_ball.price = each_skein.css("span.costSmall").text
+      #yarn_ball.url = "www.knitpicks.com" + each_skein.css("a.titleSmall").first.attr("href").strip
+      yarn_ball.availability = true
+      @@all << yarn_ball
+    end
+  end
 
-  #def self.scrape_deals
-  #  deals = []
+  def self.yarn_list
+    yarn_list = []
+    self.all.each do |yarn_ball|
+      yarn_list << yarn_ball.name
+      binding.pry
+    end
+  end
 
-  #  deals << self.scrape_knit_picks
-    #deals << self.scrape_love_knitting
-    # Go to website, find the product
-    # extract the properties
-    # instantiate a deal_1
-
-    # Go to website
-    # Have an array of data
-    # Push the data into the array of 'deals'
-  #  deals
-
-    #deal_1 = self.new
-    #deal_1.name = "Yarn 1"
-    #deal_1.price = "$5"
-    #deal_1.availability = true
-    #deal_1.url = "https://"
-
-    #deal_2 = self.new
-    #deal_2.name = "Yarn 2"
-    #deal_2.price = "$5"
-    #deal_2.availability = true
-    #deal_2.url = "https://"
-
-    #[deal_1, deal_2]
-  #end
+end
 
   #def self.scrape_knit_picks
   #  doc = Nokogiri::HTML(open("http://www.knitpicks.com/yarns/knitting_yarns.html"))
@@ -63,19 +51,3 @@ class KnittingYarnDeals::Yarn_Deal
   #  deal.availability = true
   #  deal
   #end
-
-  #def self.scrape_love_knitting
-    #doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-yarns"))
-    #put in the different html tags into this area
-    #example: name = doc.search("h2.main-title").text
-    #another example: price = doc.search("#todays-deal span.price").text
-
-    #deal = self.new
-    #deal.name = doc.search("figcaption.card-info .card-title").text
-    #deal.price = doc.search(".card-price .price-wrapper .price").text
-    #deal.weight = doc.search("em.card-features").text
-    #deal.url = doc.search(".card a.product").first.attr("href")
-    #deal.availability = true
-    #deal
-  #end
-#end
