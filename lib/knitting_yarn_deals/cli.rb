@@ -3,6 +3,8 @@ require 'pry'
 class KnittingYarnDeals::CLI
 
   def call
+    system("clear")
+    sleep(1)
     hello
     list_yarns
     menu
@@ -18,24 +20,20 @@ class KnittingYarnDeals::CLI
   end
 
   def list_yarns
-    # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-h
-    # puts <<-Doc.gsub /^\s*/, ''
-    KnittingYarnDeals::YarnDeal.yarn_index
-    KnittingYarnDeals::YarnDeal.yarn_list
+    @skein = KnittingYarnDeals::Scraper.this_day
+    @skein.each.with_index(1) do |yarn, i|
+      puts "#{i}. #{yarn.name} - #{yarn.price}"
+    end
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Type in the number from the list of yarn you would like to know more about
-      or type 'list' again to see the list of yarns or type 'exit' to end this app:"
     input = gets.strip.downcase
-
+    puts "Type in the number from the list of yarn you would like to know more about
+    or type 'list' again to see the list of yarns or type 'exit' to end this app:"
     if input.to_i > 0
-
-      puts "yarn of your choice"
-    #  yarns = @yarn_deal[input.to_i-1]
-      #puts "#{yarns.name} - #{yarns.price} - #{yarns.weight} - #{yarns.availability}"
+  
     elsif input == "list"
       list_yarns
     else
