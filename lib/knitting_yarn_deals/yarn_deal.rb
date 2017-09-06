@@ -8,11 +8,15 @@ class KnittingYarnDeals::YarnDeal
     @@all
   end
 
+  def self.find(id)
+    self.all[id-1]
+  end
+
   def initialize
     @name = name
     @price = price
     @url = url
-    @availability = availability
+    @availability = true
     @@all << self
   end
 
