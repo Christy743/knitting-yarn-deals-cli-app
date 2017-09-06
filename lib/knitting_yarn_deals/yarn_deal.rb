@@ -1,6 +1,6 @@
 require 'pry'
 class KnittingYarnDeals::YarnDeal
-  attr_accessor :name, :price, :availability, :url
+  attr_accessor :name, :price, :availability, :url, :description
 
   @@all = []
 
@@ -16,8 +16,23 @@ class KnittingYarnDeals::YarnDeal
     @name = name
     @price = price
     @url = url
+    @description = description
     @availability = true
-    @@all << self
+    #@@all << self
+  end
+
+  def save
+    if valid?
+      @@all << self
+    end
+  end
+
+  def valid?
+    validate_name
+  end
+
+  def validate_name
+    !@name.strip.empty?
   end
 
 end
