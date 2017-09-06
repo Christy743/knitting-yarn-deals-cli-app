@@ -22,28 +22,31 @@ class KnittingYarnDeals::CLI
 
   def list_yarns
     @skein = KnittingYarnDeals::Scraper.this_day
+    if @skein != nil
     @skein.each.with_index(1) do |yarn, i|
       puts "#{i}. #{yarn.name}"
+    end
     end
   end
 
   def menu
     input = nil
+    puts "Type in the number from the list of yarn you would like to know more about
+    or type 'list' again to see the list of yarns or type 'exit' to end this app:".gsub /^\s*/, ''
+    puts ""
     while input != "exit"
-      puts "Type in the number from the list of yarn you would like to know more about
-      or type 'list' again to see the list of yarns or type 'exit' to end this app:".gsub /^\s*/, ''
-      puts ""
+
     input = gets.strip.downcase
     #puts "Type in the number from the list of yarn you would like to know more about
     #or type 'list' again to see the list of yarns or type 'exit' to end this app:"
     if input.to_i > 0 && input.to_i < 11
       puts "#{@skein[input.to_i-1].url}"
       menu
-    elsif
-      puts "Please type 'list' for a list of yarns or type 'exit' to exit this app."
-      menu
-    else input == "list"
+    elsif input == "list"
       list_yarns
+    else
+      puts "Please type 'list' for a list of yarns or type 'exit' to exit this app."
+      #menu
     end
     end
   end
