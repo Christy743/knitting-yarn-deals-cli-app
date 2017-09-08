@@ -22,7 +22,8 @@ end
       yarn_ball.name = each_skein.css("a.titleSmall").text
       yarn_ball.price = each_skein.css("span.costSmall").text.delete(" ").gsub /^\s*/, ''
       yarn_ball.url = "http://www.knitpicks.com#{each_skein.css("a").attribute("href").value}"
-      yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("span.prodDesc").text.delete("").gsub /^\s*/, ''
+      yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("div#prodDesc span.prodDesc").text  #.gsub /.{1}$/, ''   #gsub /^\s*/, ''
+      #truncate(yarn_ball.description, 100, "... Read More")
       #yarn_ball.description = each_skein.css("div#titleAuthor h1 span div.prodPrice").css("div#prodDesc span").text
       #yarn_ball.url = each_skein.css("a").select { |link| puts "#{link.text}\t#{link['href']}"}
       #yarn_ball.description = yarn_ball.url.map { |ind_url|

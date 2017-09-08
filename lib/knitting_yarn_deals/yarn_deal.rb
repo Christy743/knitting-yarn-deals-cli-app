@@ -33,6 +33,11 @@ class KnittingYarnDeals::YarnDeal
 
   def validate_name
     !@name.strip.empty?
+    #!@description.strip.empty?
   end
+
+  #def truncate
+  #  @description.length
+  #end
 
 end

@@ -9,7 +9,6 @@ class KnittingYarnDeals::CLI
     sleep(1)
     list_yarns
     menu
-    goodbye
   end
 
   def hello
@@ -30,23 +29,34 @@ class KnittingYarnDeals::CLI
   end
 
   def menu
-    input = nil
-    while input != "exit"
+    #input = nil
+    #while input != "exit"
       puts ""
-      puts "Type in the number from the list of yarn you would like to know more about
-      or type 'exit' to end this app:".gsub /^\s*/, ''
+      puts "Please type in the number from the list of yarn you would like to know more about
+      or type in 'list' to see the list again or type 'exit' to end this app:".gsub /^\s*/, ''
       puts ""
       input = gets.strip.downcase
-
       if input.to_i > 0
         yarn_deal = @skein[input.to_i-1]
+        puts "Description of #{yarn_deal.name}"
+        puts "Price of yarn: #{yarn_deal.price}"
         puts "#{yarn_deal.description}"
+        puts "#{yarn_deal.url}"
+          if yarn_deal.description.strip.empty?
+            puts "Sorry! There is no description for this yarn."
+          #elsif input == "list"
+            #list_yarns
+          end
+          menu
+      elsif input == "exit"
+        goodbye
       elsif input == "list"
         list_yarns
+        menu
       else
-        puts "Please type 'list' for a list of yarns or type 'exit' to exit this app."
+        puts "I'm not sure what you are trying to do?"
+        menu
       end
-    end
   end
 
   #def menu
