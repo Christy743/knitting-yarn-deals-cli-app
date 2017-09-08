@@ -1,5 +1,4 @@
 # file with all the required files
-require "pry" #take out this before publishing gem
 require "nokogiri"
 require "open-uri"
 

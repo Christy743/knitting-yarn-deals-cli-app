@@ -1,4 +1,3 @@
-require 'pry'
 class KnittingYarnDeals::YarnDeal
   attr_accessor :name, :price, :availability, :url, :description
 
@@ -18,7 +17,6 @@ class KnittingYarnDeals::YarnDeal
     @url = url
     @description = description
     @availability = true
-    #@@all << self
   end
 
   def save
@@ -33,11 +31,6 @@ class KnittingYarnDeals::YarnDeal
 
   def validate_name
     !@name.strip.empty?
-    #!@description.strip.empty?
   end
-
-  #def truncate
-  #  @description.length
-  #end
 
 end
