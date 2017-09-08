@@ -35,12 +35,15 @@ class KnittingYarnDeals::CLI
       puts "Please type in the number from the list of yarn you would like to know more about
       or type in 'list' to see the list again or type 'exit' to end this app:".gsub /^\s*/, ''
       puts ""
+      puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+      puts ""
       input = gets.strip.downcase
       if input.to_i > 0
         yarn_deal = @skein[input.to_i-1]
         puts "Description of #{yarn_deal.name}"
         puts "Price of yarn: #{yarn_deal.price}"
         puts "#{yarn_deal.description}"
+        puts "Web page address for #{yarn_deal.name}:"
         puts "#{yarn_deal.url}"
           if yarn_deal.description.strip.empty?
             puts "Sorry! There is no description for this yarn."
