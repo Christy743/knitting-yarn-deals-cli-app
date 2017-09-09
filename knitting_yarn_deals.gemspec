@@ -6,11 +6,11 @@ require "knitting_yarn_deals/version"
 Gem::Specification.new do |spec|
   spec.name          = "knitting_yarn_deals"
   spec.version       = KnittingYarnDeals::VERSION
-  spec.authors       = ["Christina"]
+  spec.authors       = ["ChristinaChronister"]
   spec.email         = ["https://github.com/christy743/"]
 
   spec.summary       = %q{Gem to help knitters to find yarn deals.}
-  spec.description   = %q{As a knitter I am always looking for yarn deals even though I have a basement full of yarn.}
+  spec.description   = %q{As a knitter I am always looking for yarn deals even though I have a basement full of yarn. I want to help other knitters.}
   spec.homepage      = "https://  TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
