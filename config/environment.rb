@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # file with all the required files
 require "nokogiri"
 require "open-uri"

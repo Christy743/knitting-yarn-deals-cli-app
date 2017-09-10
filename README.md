@@ -4,23 +4,13 @@ This Ruby Gem provides a CLI to view a list of yarn product for knitters as per 
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'knitting_yarn_deals'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install knitting_yarn_deals
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+    $ knitting_yarn_deals
 
 ## Development
 
