@@ -34,6 +34,6 @@ Git Repo Address           [X]     Started repository for my gem CLI project
 Record Code for 20 minutes [X]     Used vokoscreen to record
 Blog Post                  []
 Publish Gem                []
-README.md                  []
+README.md                  [X]
 Video Demo of the Gem
 for User                   []

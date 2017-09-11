@@ -1,6 +1,6 @@
 # KnittingYarnDeals
 
-This Ruby Gem provides a CLI to view a list of yarn product for knitters as per the Knitpicks.com website.
+This Ruby Gem provides a command line interface to view a list of yarn product for knitters as per the Knitpicks.com website.
 
 ## Installation
 
