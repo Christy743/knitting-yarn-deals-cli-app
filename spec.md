@@ -32,8 +32,8 @@ List for knitting_yarn_deals gem/app lab requirements:
 
 Git Repo Address           [X]     Started repository for my gem CLI project
 Record Code for 20 minutes [X]     Used vokoscreen to record
-Blog Post                  []
-Publish Gem                []
-README.md                  [X]
+Blog Post                  [X]     Wrote a journal
+Publish Gem                []      Not complete - have to figure out why I have too many gem names
+README.md                  [X]     Wrote a README file to show how to install the gem
 Video Demo of the Gem
-for User                   []
+for User                   [X]     Recorded and put on website
