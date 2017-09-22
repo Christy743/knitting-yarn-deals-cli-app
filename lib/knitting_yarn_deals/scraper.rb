@@ -13,16 +13,25 @@ class KnittingYarnDeals::Scraper
     end
   end
 
+  def self.scrape_details(yarn_ball, index)
+    skein = @yarn_array[index]
+
+    yarn_ball.price = skein.css("span.costSmall").text.delete(" ").gsub /^\s*/, ''
+    yarn_ball.url = "http://www.knitpicks.com#{skein.css("a").attribute("href").value}"
+    yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("div#prodDesc span.prodDesc").text.gsub /^\s*/, ' '
+    yarn_ball.availability = true
+  end
+
   def self.yarn_index
     html = self.get_page
-    yarn_array = html.css("div.jcarousel li")
-    yarn_array.each do |each_skein|
+    @yarn_array = html.css("div.jcarousel li")
+    @yarn_array.each do |each_skein|
       yarn_ball = KnittingYarnDeals::YarnDeal.new
       yarn_ball.name = each_skein.css("a.titleSmall").text
-      yarn_ball.price = each_skein.css("span.costSmall").text.delete(" ").gsub /^\s*/, ''
-      yarn_ball.url = "http://www.knitpicks.com#{each_skein.css("a").attribute("href").value}"
-      yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("div#prodDesc span.prodDesc").text.gsub /^\s*/, ' '
-      yarn_ball.availability = true
+      #yarn_ball.price = each_skein.css("span.costSmall").text.delete(" ").gsub /^\s*/, ''
+      #yarn_ball.url = "http://www.knitpicks.com#{each_skein.css("a").attribute("href").value}"
+      #yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("div#prodDesc span.prodDesc").text.gsub /^\s*/, ' '
+      #yarn_ball.availability = true
       yarn_ball.save
     end
   end

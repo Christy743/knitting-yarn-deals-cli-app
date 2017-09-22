@@ -32,8 +32,9 @@ class KnittingYarnDeals::CLI
       puts ""
       puts ""
       input = gets.strip
-      if input.to_i > 0
+      if input.to_i > 0 &&  input.to_i < KnittingYarnDeals::YarnDeal.all.count
         yarn_deal = @skein[input.to_i-1]
+        KnittingYarnDeals::Scraper.scrape_details(yarn_deal, input.to_i-1)
         puts "Description of #{yarn_deal.name}"
         puts "Price of yarn: #{yarn_deal.price}"
         puts "#{yarn_deal.description}"
