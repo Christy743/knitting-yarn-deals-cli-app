@@ -28,10 +28,6 @@ class KnittingYarnDeals::Scraper
     @yarn_array.each do |each_skein|
       yarn_ball = KnittingYarnDeals::YarnDeal.new
       yarn_ball.name = each_skein.css("a.titleSmall").text
-      #yarn_ball.price = each_skein.css("span.costSmall").text.delete(" ").gsub /^\s*/, ''
-      #yarn_ball.url = "http://www.knitpicks.com#{each_skein.css("a").attribute("href").value}"
-      #yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("div#prodDesc span.prodDesc").text.gsub /^\s*/, ' '
-      #yarn_ball.availability = true
       yarn_ball.save
     end
   end

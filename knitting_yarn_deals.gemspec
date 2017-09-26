@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.description      = %q{As a knitter I am always looking for yarn deals even though I have a basement full of yarn. I want to help other knitters.}
   spec.homepage         = "https://github.com/Christy743/knitting-yarn-deals-cli-app"
   spec.license          = "MIT"
-  spec.version          = "0.2.0"
+  spec.version          = "0.2.1"
 
   spec.files            = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
