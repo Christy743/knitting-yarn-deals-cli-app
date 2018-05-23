@@ -1,7 +1,7 @@
 class KnittingYarnDeals::Scraper
 
   def self.get_page
-    html = Nokogiri::HTML(open("http://www.knitpicks.com/yarns/knitting_yarns.html"))
+    html = Nokogiri::HTML(open("https://www.knitpicks.com/yarns/knitting_yarns.html"))
   end
 
   def self.this_day
@@ -17,7 +17,7 @@ class KnittingYarnDeals::Scraper
     skein = @yarn_array[index]
 
     yarn_ball.price = skein.css("span.costSmall").text.delete(" ").gsub /^\s*/, ''
-    yarn_ball.url = "http://www.knitpicks.com#{skein.css("a").attribute("href").value}"
+    yarn_ball.url = "https://www.knitpicks.com#{skein.css("a").attribute("href").value}"
     yarn_ball.description = Nokogiri::HTML(open(yarn_ball.url)).css("div#prodDesc span.prodDesc").text.gsub /^\s*/, ' '
     yarn_ball.availability = true
   end

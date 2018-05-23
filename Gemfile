@@ -5,5 +5,7 @@ source "https://rubygems.org" do
 # Specify your gem's dependencies in knitting_yarn_deals.gemspec
 
 gemspec
+gem 'open_uri_redirections'
+
 
 end
